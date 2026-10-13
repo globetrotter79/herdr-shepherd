@@ -33,7 +33,7 @@ sh scripts/build.sh
 herdr plugin link /path/to/herdr-shepherd
 ```
 
-`scripts/build.sh` prefers a local Go toolchain (an exact build of the source you have) and falls back to `scripts/install.sh`, which downloads the matching prebuilt binary for your OS and architecture from the GitHub release and checks it against the release's `SHA256SUMS`. No Go toolchain is required.
+`scripts/build.sh` builds from the source you have with a local Go toolchain, and fails without one. This fork removed the upstream fallback that downloaded a prebuilt release binary.
 
 Installing registers `Shepherd: Board` and `Shepherd: Status` as plugin actions, and a startup hook that spawns the scheduler daemon whenever the herdr server starts. herdr has no built-in menu for plugin actions; reach them with a keybinding (below) or `herdr plugin action invoke`.
 
